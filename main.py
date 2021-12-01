@@ -4,8 +4,8 @@ delka = 0
 
 def on_button_pressed_b():
     global zvuk
-    zvuk = int(randint(3, 30))
-    zvuk *= 100
+    zvuk = int(randint(1, 12))
+    zvuk *= 250
     basic.show_icon(IconNames.YES)
     on_button_pressed_a()
 input.on_button_pressed(Button.B, on_button_pressed_b)

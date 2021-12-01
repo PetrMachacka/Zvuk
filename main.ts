@@ -3,8 +3,8 @@ let začátek = 0
 let delka = 0
 input.onButtonPressed(Button.B, function on_button_pressed_b() {
     
-    zvuk = Math.trunc(randint(3, 30))
-    zvuk *= 100
+    zvuk = Math.trunc(randint(1, 12))
+    zvuk *= 250
     basic.showIcon(IconNames.Yes)
     on_button_pressed_a()
 })
