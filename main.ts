@@ -40,7 +40,7 @@ input.onLogoEvent(TouchButtonEvent.Released, function logo_released() {
         console.log(delka)
         rozdíl = zvuk - delka
         console.log(rozdíl)
-        if (rozdíl < 150 || -150) {
+        if (rozdíl < 150 && rozdíl > -150) {
             music.playTone(Note.C, 500)
             basic.pause(250)
             music.playTone(Note.C, 500)

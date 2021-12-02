@@ -37,7 +37,7 @@ def logo_released():
         print(delka)
         rozdíl = zvuk - delka
         print(rozdíl)
-        if rozdíl < 150 or -150 :
+        if rozdíl < 150 and rozdíl > -150 :
                     music.play_tone(Note.C, 500)
                     basic.pause(250)
                     music.play_tone(Note.C, 500)
