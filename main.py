@@ -37,32 +37,37 @@ def logo_released():
         print(delka)
         rozdíl = zvuk - delka
         print(rozdíl)
-        basic.show_leds("""
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            """)
-        for i in range((abs(rozdíl//100))):
-            led.unplot(i//5, i-(i//5)*5)
-        basic.pause(2500)
-        if rozdíl > 0:
+        if rozdíl < 150 or -150 :
+                    music.play_tone(Note.C, 500)
+                    basic.pause(250)
+                    music.play_tone(Note.C, 500)
+                    basic.show_leds("""
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    """)
+        elif rozdíl > 0:
             basic.show_leds("""
             . . # . .
-            . # # # .
-            # . # . #
             . . # . .
+            # . # . #
+            . # # # .
             . . # . .
             """)
         elif rozdíl < 0:
+            led.plot_bar_graph(zvuk, delka)
+            basic.pause(2500)
             basic.show_leds("""
             . . # . .
-            . . # . .
-            # . # . #
             . # # # .
+            # . # . #
             . . # . .
-            """)        
+            . . # . .
+            """)
+        elif rozdíl < 250000 or -250000 :
+            music.play_melody("c", 500)
 input.on_logo_event(TouchButtonEvent.RELEASED, logo_released)
 
 

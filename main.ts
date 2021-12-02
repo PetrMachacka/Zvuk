@@ -40,33 +40,37 @@ input.onLogoEvent(TouchButtonEvent.Released, function logo_released() {
         console.log(delka)
         rozdíl = zvuk - delka
         console.log(rozdíl)
-        basic.showLeds(`
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            # # # # #
-            `)
-        for (let i = 0; i < Math.abs(Math.idiv(rozdíl, 100)); i++) {
-            led.unplot(Math.idiv(i, 5), i - Math.idiv(i, 5) * 5)
-        }
-        basic.pause(2500)
-        if (rozdíl > 0) {
+        if (rozdíl < 150 || -150) {
+            music.playTone(Note.C, 500)
+            basic.pause(250)
+            music.playTone(Note.C, 500)
+            basic.showLeds(`
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    `)
+        } else if (rozdíl > 0) {
             basic.showLeds(`
             . . # . .
-            . # # # .
-            # . # . #
             . . # . .
+            # . # . #
+            . # # # .
             . . # . .
             `)
         } else if (rozdíl < 0) {
+            led.plotBarGraph(zvuk, delka)
+            basic.pause(2500)
             basic.showLeds(`
             . . # . .
-            . . # . .
-            # . # . #
             . # # # .
+            # . # . #
+            . . # . .
             . . # . .
             `)
+        } else if (rozdíl < 250000 || -250000) {
+            music.playMelody("c", 500)
         }
         
     }
